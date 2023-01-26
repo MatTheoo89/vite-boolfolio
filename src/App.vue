@@ -1,6 +1,8 @@
 <script>
 import axios from 'axios';
+import ProjectCard from './components/ProjectCard.vue';
 export default {
+    components: { ProjectCard },
   
   name: 'App',
   
@@ -15,7 +17,7 @@ export default {
     getApi(){
       axios.get(this.baseUrl + this.ProjectUri)
       .then(r => {
-        this.projects = r.data;
+        this.projects = r.data.projects;
           console.log(this.projects);
       })
       // .catch( error => {errorMsg = error})
@@ -37,6 +39,11 @@ export default {
     <div class="row">
       <div class="col2">
         <h1>PHP è più bello, tanto più bello!! Buuuuu Vue</h1>
+      </div>
+      <div class="col">
+        <div class="container-fluid d-flex flex-wrap justify-content-around">
+        <project-card class="m-3" v-for="project in projects" :key="project.id" :project="project"/>
+        </div>
       </div>
     </div>
   </div>
