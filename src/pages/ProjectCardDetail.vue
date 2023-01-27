@@ -9,7 +9,7 @@ export default {
         return {
             baseUrl: 'http://127.0.0.1:8000/api',
             ProjectUri: '/project/',
-            project: {type: {}},
+            project: {},
         }
     },
     methods:{
@@ -18,7 +18,7 @@ export default {
             .then(r => {
                 this.project = r.data;
                 
-        console.log(r.data);
+        console.log(this.project.name);
 
         });
       // .catch( error => {errorMsg = error})
@@ -32,20 +32,20 @@ export default {
 
 
 <template>
-        <img :src="project.cover_image" class="card-img-top" :alt="'image-' + project.name">
-    <!-- <div class="card col-3 text-black"> -->
         <!-- <img :src="project.cover_image" class="card-img-top" :alt="'image-' + project.name"> -->
-        <!-- <div class="card-body">
+    <div class="card col-3 text-black">
+        <img :src="project.cover_image" class="card-img-top" :alt="'image-' + project.name">
+        <div class="card-body">
         <h3 class="card-title fw-bold">{{project.name}}</h3>
-        <h4 class="card-title"> <strong>Cateoria:</strong> {{project.type.type}}</h4> -->
-        <!-- <h5 class="card-title">
+        <h4 class="card-title" v-if="project.type"> <strong>Cateoria:</strong> {{project.type.type}}</h4>
+        <h5 class="card-title">
             <strong>Tecnologie: </strong>
             <span class="badge text-bg-danger me-2"
                 v-for="tag in project.technologies" :key="tag.id">{{tag.type}}</span>
-        </h5> -->
-        <!-- <p class="card-text">{{project.summary}}</p> -->
-    <!-- </div>
-</div> -->
+        </h5>
+        <p class="card-text">{{project.summary}}</p>
+    </div>
+</div>
     
 </template>
 
