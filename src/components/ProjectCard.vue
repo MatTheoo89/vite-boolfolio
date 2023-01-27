@@ -1,8 +1,8 @@
 <template>
     <div class="card col-3 text-black">
-        <img src="{{project.cover_image}}" class="card-img-top" :alt="project.name">
+        <!-- <img :src="project.cover_image" class="card-img-top" :alt="project.name"> -->
         <div class="card-body">
-        <h3 class="card-title fw-bold">{{project.name}}</h3>
+        <h3 class="card-title fw-bold"><router-link :to="{name: 'detail', params:{slug: project.slug} }">{{project.name}}</router-link></h3>
         <h4 class="card-title"> <strong>Cateoria:</strong> {{project.type.type}}</h4>
         <h5 class="card-title" v-if="project.technologies.length">
             <strong>Tecnologie: </strong>
