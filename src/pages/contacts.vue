@@ -6,7 +6,7 @@ export default {
 
 
 <template>
-    
+    <h1>contatti</h1>
 </template>
 
 
