@@ -21,7 +21,7 @@ export default {
             axios.get(this.baseUrl + this.ProjectUri)
             .then(r => {
                 this.projects = r.data.projects;
-            console.log(r.data.projects[1]);
+            // console.log(r.data.projects[1]);
         })
       // .catch( error => {errorMsg = error})
         },

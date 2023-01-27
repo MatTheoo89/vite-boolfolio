@@ -18,7 +18,7 @@ export default {
             .then(r => {
                 this.project = r.data;
                 
-        console.log(this.project.name);
+        // console.log(this.project.name);
 
         });
       // .catch( error => {errorMsg = error})
