@@ -33,19 +33,19 @@ export default {
 
 <template>
         <img :src="project.cover_image" class="card-img-top" :alt="'image-' + project.name">
-    <div class="card col-3 text-black">
+    <!-- <div class="card col-3 text-black"> -->
         <!-- <img :src="project.cover_image" class="card-img-top" :alt="'image-' + project.name"> -->
-        <div class="card-body">
+        <!-- <div class="card-body">
         <h3 class="card-title fw-bold">{{project.name}}</h3>
-        <h4 class="card-title"> <strong>Cateoria:</strong> {{project.type.type}}</h4>
-        <h5 class="card-title">
+        <h4 class="card-title"> <strong>Cateoria:</strong> {{project.type.type}}</h4> -->
+        <!-- <h5 class="card-title">
             <strong>Tecnologie: </strong>
             <span class="badge text-bg-danger me-2"
                 v-for="tag in project.technologies" :key="tag.id">{{tag.type}}</span>
-        </h5>
-        <p class="card-text">{{project.summary}}</p>
-    </div>
-</div>
+        </h5> -->
+        <!-- <p class="card-text">{{project.summary}}</p> -->
+    <!-- </div>
+</div> -->
     
 </template>
 

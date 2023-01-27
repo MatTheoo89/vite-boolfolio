@@ -7,7 +7,7 @@ import ProjectCard from '../components/ProjectCard.vue';
 export default {
     components: { ProjectCard },
 
-    name: 'profect',
+    name: 'project',
 
     data(){
         return {
@@ -21,13 +21,14 @@ export default {
             axios.get(this.baseUrl + this.ProjectUri)
             .then(r => {
                 this.projects = r.data.projects;
-            console.log(this.projects);
+            console.log(r.data.projects[1]);
         })
       // .catch( error => {errorMsg = error})
         },
     },
     mounted(){
         this.getApi();
+        // console.log(this.projects);
       // console.log('mounted');
     }
 }
