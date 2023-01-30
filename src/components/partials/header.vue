@@ -8,16 +8,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link :to="{name: 'home'}"><a class="nav-link text-decoration-none" aria-current="page">Home</a></router-link>
+                    <router-link :to="{name: 'home'}"><span>Home</span></router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link :to="{name: 'project'}"><a class="nav-link text-decoration-none" aria-current="page">Project</a></router-link>
+                    <router-link :to="{name: 'project'}"><span>Project</span></router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link :to="{name: 'about'}"><a class="nav-link text-decoration-none">Chi siamo</a></router-link>
+                    <router-link :to="{name: 'about'}"><span>Chi siamo</span></router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link :to="{name: 'contact'}"><a class="nav-link text-decoration-none">Contatti</a></router-link>
+                    <router-link :to="{name: 'contact'}"><span>Contatti</span></router-link>
                 </li>
             </ul>
         </div>
@@ -34,13 +34,20 @@ export default {
 <style lang="scss" scoped>
 
         
-        a{
+        li{
             font-size: 2rem;
-            text-decoration: none;
-            &.active{
-            background-color: green;
+            a{
+                margin-right: 20px;
+                text-decoration: none;
             }
+        }
+
+        .active{
+            color: green;
         }
 
 
 </style>
+
+
+// class="nav-link text-decoration-none" aria-current="page"
