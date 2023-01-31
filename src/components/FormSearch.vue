@@ -21,7 +21,7 @@ export default {
                 axios.post(this.baseUrl + this.ProjectUri + '/search', data).then(r => {
                     this.tosearch = '';
                     this.store.projects = r.data.projects;
-                    console.log(this.store.projects);
+                    // console.log(this.store.projects);
             });
 
         }
