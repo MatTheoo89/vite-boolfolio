@@ -9,7 +9,7 @@ export default {
             baseUrl: 'http://127.0.0.1:8000/api',
             name: '',
             mail: '',
-            object: '',
+            oogetto: '',
             message: '',
             errors: {},
 
@@ -20,21 +20,24 @@ export default {
             const formData = {
                 name: this.name,
                 mail: this.mail,
-                object: this.object,
+                object: this.oogetto,
                 message: this.message,
             }
             // console.log(formData);
 
             axios.post(this.baseUrl + '/contacts', formData)
             .then(r =>{
+                // console.log(r.data);
 
                 if(!r.data.success){
                         this.errors = r.data.errors;
                     }else{
                         // ripulisco il form
+                        // console.log('sto cazzo');
                         this.name = '';
                         this.mail = '';
                         this.message = '';
+                        this.oogetto = '';
                         this.errors = {};
                     }
             })
@@ -77,13 +80,13 @@ export default {
 											</div>
 											<div class="col-md-12"> 
 												<div class="form-group">
-													<input :class="{'is-invalid': errors.mail}" type="email" class="form-control" v-model.trim="mail"  name="mail" id="email" placeholder="Email">
+													<input :class="{'is-invalid': errors.mail}" type="mail" class="form-control" v-model.trim="mail"  name="mail" id="email" placeholder="Email">
                                                     <p v-for="(error, index) in errors.mail" :key="'mail'+index" :class="{'is-invalid': errors.name}">{{error}}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input :class="{'is-invalid': errors.object}" type="text" class="form-control" v-model.trim="object"  name="object" id="subject" placeholder="object">
+													<input :class="{'is-invalid': errors.oogetto}" type="text" class="form-control" v-model.trim="oogetto"  name="oogetto" id="object" placeholder="object">
                                                     <p v-for="(error, index) in errors.object" :key="'object'+index" :class="{'is-invalid': errors.name}">{{error}}</p>
 												</div>
 											</div>
