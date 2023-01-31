@@ -27,7 +27,7 @@ export default {
 
             axios.post(this.baseUrl + '/contacts', formData)
             .then(r =>{
-                // console.log(r.data);
+                console.log(formData);
 
                 if(!r.data.success){
                         this.errors = r.data.errors;
