@@ -7,11 +7,11 @@ export default {
     data(){
         return{
             baseUrl: 'http://127.0.0.1:8000/api',
-            ProjectUri: '/contacts',
             name: '',
             mail: '',
             object: '',
             message: '',
+            errors: {},
 
         }
     },
@@ -23,7 +23,21 @@ export default {
                 object: this.object,
                 message: this.message,
             }
-            console.log(formData);
+            // console.log(formData);
+
+            axios.post(this.baseUrl + '/contacts', formData)
+            .then(r =>{
+
+                if(!r.data.success){
+                        this.errors = r.data.errors;
+                    }else{
+                        // ripulisco il form
+                        this.name = '';
+                        this.mail = '';
+                        this.message = '';
+                        this.errors = {};
+                    }
+            })
         },
 
     }
@@ -57,22 +71,26 @@ export default {
 										<div class="row">
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control" v-model.trim="name" name="name" id="name" placeholder="Name">
+													<input :class="{'is-invalid': errors.name}" type="text" class="form-control" v-model.trim="name" name="name" id="name" placeholder="Name">
+                                                    <p v-for="(error, index) in errors.name" :key="'name'+index" :class="{'is-invalid': errors.name}">{{error}}</p>
 												</div>
 											</div>
 											<div class="col-md-12"> 
 												<div class="form-group">
-													<input type="email" class="form-control" v-model.trim="mail"  name="mail" id="email" placeholder="Email">
+													<input :class="{'is-invalid': errors.mail}" type="email" class="form-control" v-model.trim="mail"  name="mail" id="email" placeholder="Email">
+                                                    <p v-for="(error, index) in errors.mail" :key="'mail'+index" :class="{'is-invalid': errors.name}">{{error}}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control" v-model.trim="object"  name="object" id="subject" placeholder="object">
+													<input :class="{'is-invalid': errors.object}" type="text" class="form-control" v-model.trim="object"  name="object" id="subject" placeholder="object">
+                                                    <p v-for="(error, index) in errors.object" :key="'object'+index" :class="{'is-invalid': errors.name}">{{error}}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="form-group">
-													<textarea v-model.trim="message"  name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+													<textarea :class="{'is-invalid': errors.message}" v-model.trim="message"  name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                                    <p v-for="(error, index) in errors.message" :key="'message'+index" :class="{'is-invalid': errors.name}">{{error}}</p>
 												</div>
 											</div>
 											<div class="col-md-12">
@@ -379,11 +397,11 @@ textarea.form-control {
     background-color: rgb(211, 211, 211);
 }
 
-// .form-group{
-//     margin-bottom: 10px;
-//     input, text-area.form-control{
+input.is-invalid{
+    border: 1px solid red !important;
+}
+p.is-invalid{
+    color: red !important;
+}
 
-//         border-radius: 10px;
-//     }
-// }
 </style>
